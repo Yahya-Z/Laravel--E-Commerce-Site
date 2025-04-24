@@ -124,9 +124,9 @@ const openSidebar = () => {
         :class="{
             'rounded-tl-[80px]': !isSidebarOpen,
             'ml-57': isSidebarOpen,
-            'max-w-[95.5%]': isSidebarOpen,
+            'max-w-[90%]': isSidebarOpen,
             'max-w-[95%]': !isSidebarOpen,
-            'ml-20': !isSidebarOpen
+            'ml-15': !isSidebarOpen
         }"
          class="bg-white rounded-4xl shadow-lg p-6 flex flex-col items-center justify-start transition-all duration-300">
             <!-- Title and Subtitle -->
