@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderItem extends Model
 {
+    // this is for the order item table
+    // it will contain the order id, product id, quantity, and price at purchase
+    // the price at purchase is important for historical accuracy
+    // in case the product price changes in the future
     protected $fillable = [
         'quantity',
         'price_at_purchase' // Critical for historical accuracy
