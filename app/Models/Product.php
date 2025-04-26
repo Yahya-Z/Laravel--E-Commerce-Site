@@ -3,22 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
-    public function cart()
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock',
+    ];
+
+    /*
+       * Relationship: A product can be in many carts
+       * @return HasMany
+    */
+    public function cartItems()
     {
-        // This method defines a one-to-many relationship with the Cart model.
-        // It indicates that a product can belong to multiple carts.
-        // The 'cart_id' foreign key in the products table references the id of the cart.
-        return $this->belongsTo(Cart::class, 'cart_id');
+        return $this->hasMany(CartItem::class);
     }
 
-    public function order()
+    /*
+       * Relationship: A product can appear in many orders
+       * @return HasMany
+    */
+    public function orderItems()
     {
-        // This method defines a one-to-many relationship with the Order model.
-        // It indicates that a product can belong to multiple orders.
-        // The 'order_id' foreign key in the products table references the id of the order.
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->hasMany(OrderItem::class);
     }
+
 }

@@ -3,14 +3,33 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
-    public function order()
+    protected $fillable = [
+        'user_id', 
+        'total', 
+        'status'
+    ];
+
+    /**
+     * Relationship: An order contains many items
+     * @return HasMany
+     */
+    public function items(): HasMany
     {
-        // This method defines a one-to-many relationship with the product model.
-        // It indicates that an order can have multiple products.
-        // The 'product_id' foreign key in the orders table references the id of the product.
-        return $this->hasMany(Product::class, 'product_id');
+        return $this->hasMany(OrderItem::class);
+    }
+
+    /**
+     * Finalize order from cart
+     * @param Cart $cart
+     */
+    public static function createFromCart(Cart $cart): void
+    {
+        // Implementation logic here (don't write code per your request)
+        // Concept: Create order items from cart items
+        // Preserve prices at checkout
     }
 }
